@@ -4,3 +4,8 @@
 数据库: Firebase/Firestore 或 MongoDB
 认证: Firebase Auth 或 Auth0
 部署: Vercel (Next.js) 或 Netlify
+
+文件说明:
+- `React-js`: React 组件
+
+React 线上教程: https://www.bilibili.com/video/BV1wy4y1D7JT
