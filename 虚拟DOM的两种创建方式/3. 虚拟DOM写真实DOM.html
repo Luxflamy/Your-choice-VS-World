@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虚拟DOM写真实DOM</title>
+</head>
+<body>
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script type="text/javascript" src="../React-js/react.development.js"></script>
+    <!-- 引入DOM库 -->
+    <script type="text/javascript" src="../React-js/react-dom.development.js"></script>
+    <!-- 引入babel,用于将jsx转化为js -->
+    <script type="text/javascript" src="../React-js/babel.min.js"></script>
+    <!-- 这里需要用text/babel -->
+    <script type="text/babel">
+        // 1. 创建虚拟DOM
+        // const VDOM = <h1 id="title"><span>Hello, World!</span></h1> 以下是更规范的写法
+        const VDOM = (
+            <h1 id="title">
+                <span>Hello, World!</span>
+            </h1>
+        )
+        // JSX语法这里可以用<span>标签
+        // 2. 渲染虚拟DOM到页面
+        ReactDOM.render(VDOM, document.getElementById('test'))
+        
+        console.log(VDOM) 
+        console.log(typeof VDOM) // 打印虚拟DOM的类型,可以看到是一个对象Object
+        console.log(VDOM instanceof Object) // 打印虚拟DOM是否是一个对象,可以看到是true
+        
+    </script>
+</body>
+</html>
+
+
