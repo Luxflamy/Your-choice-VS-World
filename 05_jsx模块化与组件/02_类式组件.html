@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script type="text/javascript" src="../React-js/react.development.js"></script>
+    <!-- 引入DOM库 -->
+    <script type="text/javascript" src="../React-js/react-dom.development.js"></script>
+    <!-- 引入babel,用于将jsx转化为js -->
+    <script type="text/javascript" src="../React-js/babel.min.js"></script>
+    <!-- 这里需要用text/babel -->
+    <script type="text/babel">
+        // 1. 创建类式组件(React要求,创建的类组件必须继承React.Component)
+        class MyComponent extends React.Component{
+            // render是放在哪里的?  -->  render是放在原型对象上的方法,
+            // render为啥不需要实例呢? 为啥没写new MyComponent()呢?  -->  因为React会在以下渲染过程中帮你new一个实例出来: 
+                // ReactDOM.render(<MyComponent />, document.getElementById('test'));
+            render(){
+                return <h2>我使用类定义的组件(适用于复杂组件的定义)</h2>
+            }
+        }
+
+        // 2. 渲染组件
+        ReactDOM.render(<MyComponent />, document.getElementById('test'));
+        /*
+            执行了ReactDOM.render后,发生了什么?
+                1. 找到MyComponent这个组件
+                2. 发现组件是类定义的,随后React会帮你new一个MyComponent的实例出来
+                3. 将render返回的虚拟DOM转化为真实DOM,呈现到页面上
+        */
+    </script>
+</body>
+</html>

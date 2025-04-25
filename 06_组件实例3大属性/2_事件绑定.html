@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按钮</title>
+</head>
+<body>
+    <!-- 按钮被绑定的三种形式 -->
+    <button id="btn1">点击我1</button>
+    <button id="btn2">点击我2</button>
+    <button onclick="demo()">点击我3</button> 
+    <!-- 第三种是最推荐的! -->
+
+    <script type="text/javascript">
+
+        const btn1 = document.getElementById('btn1');
+        btn1.addEventListener('click', ()=>{
+            console.log('按钮1被点击了');
+        });
+
+        const btn2 = document.getElementById('btn2');
+        btn2.onclick = () => {
+            console.log('按钮2被点击了');
+        }
+
+        function demo(){
+            console.log('按钮3被点击了');
+        }
+        // 尽量使用第三种
+
+    </script>
+</body>
+</html>

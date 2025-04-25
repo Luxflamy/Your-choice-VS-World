@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            speak() {
+                console.log(this);
+            }
+        }
+
+        const p1 = new person('tom', 18);
+        p1.speak(); // 通过实例调用speak方法
+
+        const x = p1.speak;
+        x(); // 通过函数调用speak方法
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> <!-- 设置文档的字符编码为UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 设置视口，确保页面在移动设备上有良好的显示效果 -->
+    <title>Document</title> <!-- 定义网页的标题，显示在浏览器标签上 -->
+</head>
+<body> <!-- 文档的主体内容 -->
+    <!-- 此处可以添加网页的主要内容 -->
+     <div id="test"></div> <!-- 将class改为id -->
+     <!-- 引入react核心库 -->
+      <script type ="text/javascript" src="../React-js/react.development.js"></script>
+      <script type="text/javascript" src="../React-js/react-dom.development.js"></script>
+      <script type="text/javascript" src="../React-js/babel.min.js"></script>
+      
+      <script type="text/babel" >
+        // 模拟一些从后端传来的数据
+        /* 
+            注意区分js表达式和js语句:
+            1. js表达式: 计算结果是一个值,需要放在{}中
+            例如: 
+                1. 5 + 3          // 表达式，返回值为 8
+                2. "Hello" + "!"  // 表达式，返回值为 "Hello!"
+                3. x > 10         // 表达式，返回值为布尔值 true 或 false
+                4. demo(1)        // 表达式，调用函数 demo 并返回其结果
+                5. arr.map()      // 表达式，调用数组 arr 的 map 方法并返回新数组
+                6. console.log()  // 表达式，调用 console.log 函数并返回 undefined
+                7. function(){}   // 表达式，定义一个匿名函数并返回函数对象
+
+            2. js语句: 执行某种操作的代码片段,但不反回直接结果 不需要放在{}中
+            例如:
+                1. var a = 5;     // 语句，声明变量 a 并赋值为 5
+                2. if (){}   // 语句，条件语句
+                3. for (){}  // 语句，循环语句
+                4. switch (){} // 语句，选择语句
+        */
+        const data = ['React', 'Vue', 'Angular'];
+        
+        const framework = [
+            { id: 1, name: 'React' },
+            { id: 2, name: 'Vue' },
+            { id: 3, name: 'Angular' }
+        ]
+
+        const VDOM = (
+            <div>
+                <h1>前端js框架列表</h1>
+                <ul>
+                     {
+                        framework.map(item => 
+                        <li key={item.id}>{item.name}</li>
+                        )
+                     }
+                </ul>
+            </div>
+        );
+        // 渲染虚拟DOM到页面
+        ReactDOM.render(VDOM, document.getElementById('test')); // 修正选择器
+      </script>
+</body>
+</html>

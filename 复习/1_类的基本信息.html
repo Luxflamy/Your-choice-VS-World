@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Person {
+            // 构造器
+            constructor(name, age) {
+                // 构造器中的this指向实例对象
+                this.name = name;
+                this.age = age;
+            }
+            // 一般方法
+            speak() {
+                // 思考一下,speak方法放在哪里? --> 这个方法是放在原型对象上的
+                // 思考一下,speak方法给谁用? --> 这个方法是给实例对象使用的
+                // 通过person实例调用speak时, speak里的this指向实例对象person
+                console.log(`My name is ${this.name}, I am ${this.age} years old.`);
+            }
+        }        
+        // 创建一个student类,继承自Person类
+        class Student extends Person{
+            constructor(name, age, grade) {
+                super(name, age); // 调用父类的构造器,而且必须在其他代码之前调用
+                this.grade = grade; // 添加新的属性
+            }
+            // 重写父类的方法
+            speak() {
+                // 调用父类的方法
+                console.log(`My name is ${this.name}, I am ${this.age} years old. My grade is ${this.grade}.`);
+            }
+            // 添加新的方法
+            study() {
+                console.log(`I am studying.`);
+            }
+        }
+
+        const s1 = new Student('Xiaozhang', 22, 'A');
+        console.log(s1) // My name is Xiaozhang, I am 22 years old.
+        s1.speak(); // My name is Xiaozhang, I am 22 years old. My grade is A.
+        s1.study(); // I am studying.
+        /*
+            总结: 
+                1. 类中的构造器不是必须写的.
+                2. 子类可以重写父类的方法. 如果A类继承了B类,且A类中有构造器,那么必须在构造器中调用super()方法.
+                3. 类中定义的方法其实是放在了类的原型对象上的,而不是实例对象上.
+        */
+
+        class Car{
+            constructor(brand, year) {
+                this.brand = brand;
+                this.year = year;
+            }
+            a = 1; // 实例属性
+        }
+        const c1 = new Car('BMW', 2023);
+        console.log(c1);
+    </script>
+</body>
+</html>
+

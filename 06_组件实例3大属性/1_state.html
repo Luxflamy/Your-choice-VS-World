@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State Example</title>
+</head>
+<body>
+    <div class="test"></div>
+    <!-- 引入核心库 -->
+    <script type="text/javascript" src="../React-js/react.development.js"></script>
+    <!-- 引入DOM库 -->
+    <script type="text/javascript" src="../React-js/react-dom.development.js"></script>
+    <!-- 引入babel,用于将jsx转化为js -->
+    <script type="text/javascript" src="../React-js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Weather extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {isHot:true,wind:'微风'};
+                // 绑定this
+                this.changeWeather = this.changeWeather.bind(this); // 实例对象多了一个方法
+                // bind 是定义了一个新函数, 这个函数的this指向是实例对象
+            }
+            render() {
+                console.log(this);
+                // 读取状态
+                const {isHot, wind} = this.state;
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}, {wind}</h1>
+            }
+            
+            changeWeather() {
+                // changeWeather放在了哪里? --> 放在了原型对象上
+                // 由于 changeWeather是作为onClick的回调函数,所以不是通过实例调用的,是直接调用
+                // 类中的方法默认开启局部的严格模式,所以changeWeather中的this指向undefined
+                
+                // 获取原来的isHot
+                const isHot = this.state.isHot;
+                // !!严重注意: 状态不可直接更改,需要借助内置的API去更改
+                // this.state.isHot = !isHot; // 这是错误的做法
+                this.setState({isHot:!isHot}); // 这是正确的做法
+                // 状态必须通过setState去修改, setState继承于React.Component, 且更新是一种合并,或者说是异步的
+            }
+        }
+
+        ReactDOM.render(<Weather/>, document.querySelector('.test'));
+
+    </script>
+</body>
+</html>
